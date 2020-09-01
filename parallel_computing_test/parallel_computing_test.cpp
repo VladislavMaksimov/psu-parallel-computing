@@ -3,12 +3,11 @@
 #include <string>
 
 // Создание файла
-int create()
+void create()
 {
 	std::ofstream outfile("input.txt");
 	outfile << "12345678";
 	outfile.close();
-	return 0;
 }
 
 // Чтение из файла
@@ -34,6 +33,7 @@ void first_task() {
 	}
 
 	std::cout << sum << std::endl;
+	std::cout << std::endl;
 }
 
 // Бинарный поиск
@@ -49,10 +49,32 @@ void second_task(int a, int arr[], int n) {
 			low = mid + 1;
 		else {
 			std::cout << "Second task answer: element has " << mid << " index.";
+			std::cout << std::endl;
 			return;
 		}
 	}
 	std::cout << "but nobody came";
+	std::cout << std::endl;
+}
+
+void third_task(int arr[], int n) {
+	std::cout << std:: endl << "Third task answer. Bubble sort of array: ";
+	for (int i = 0; i < n; i++)
+		std::cout << arr[i] << ' ';
+	std::cout << std::endl;
+
+	for (int i = 0; i < n; i++)
+		for (int j = n - 1; j > i; j--)
+			if (arr[j] < arr[j - 1]) {
+				int temp = arr[j];
+				arr[j] = arr[j - 1];
+				arr[j - 1] = temp;
+			}
+
+	std::cout << "Will be: ";
+	for (int i = 0; i < n; i++)
+		std::cout << arr[i] << ' ';
+	std::cout << std::endl;
 }
 
 // a = A, b = B => a = B, b = A
@@ -69,6 +91,7 @@ void fourth_task() {
 	a = a - b;
 
 	std::cout << " will be a: " << a << " and b: " << b;
+	std::cout << std::endl;
 }
 
 // Произведение факториалов за один цикл
@@ -88,6 +111,9 @@ int main()
 
 	int arr[8] = { 2, 11, 12, 15, 21, 45, 90, 100 };
 	second_task(21, arr, 8);
+
+	int arr_unsort[9] = { 33, 5, 99, -1, 0, 100, 10000, 38, 32000 };
+	third_task(arr_unsort, 9);
 
 	fourth_task();
 
